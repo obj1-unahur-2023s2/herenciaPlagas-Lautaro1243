@@ -1,0 +1,78 @@
+import barrio.*
+import plagas.*
+import elementos.*
+
+describe "test sobre plagas"{
+	const sanAgustin = new Barrio()
+	const casaDiaz = new Hogar(mugre=10,confort=80)
+	const huerta1 = new Huerta(capacidadProduccion=80)
+	const tobi = new Mascota(nivelSalud=90)
+	const cucas = new Cucarachas(poblacion=10)
+	const pulgas = new Pulgas(poblacion=6)
+	const garrapatas = new Garrapatas(poblacion=6)
+	const mosquitos = new Mosquitos(poblacion=20)
+	
+	test "el nivel de daño de cucas es de 5"{
+		assert.equals(cucas.nivelDeDanio(), 5)
+	}
+	
+	test "el nivel de daño de pulgas es de 12"{
+		assert.equals(pulgas.nivelDeDanio(), 12)
+	}
+	
+	test "el nivel de daño de garrapatas es de 12"{
+		assert.equals(garrapatas.nivelDeDanio(), 12)
+	}
+	
+	test "el nivel de daño de mosquitos es de 20"{
+		assert.equals(mosquitos.nivelDeDanio(), 20)
+	}
+	
+	test "cucas transmiten no enfermedad"{
+		assert.notThat(cucas.transmitenEnfermedad())
+	}
+	
+	test "pulgas transmiten no enfermedad"{
+		assert.notThat(pulgas.transmitenEnfermedad())
+	}
+	
+	test "garrapatas transmiten no enfermedad"{
+		assert.notThat(garrapatas.transmitenEnfermedad())
+	}
+	
+	
+	test "mosquitos transmiten no enfermedad"{
+		assert.notThat(mosquitos.transmitenEnfermedad())
+	}
+	
+	test "las cucas despues de atacar aumentan su poblacion en un 10%"{
+		const poblacion = cucas.poblacion()
+		cucas.efectoDeAtaque()
+		assert.equals(cucas.poblacion(), poblacion * 1.1)
+	}
+	
+	test "cucas despues de atacar ademas de aumentar su poblacion, aumentan su peso promedio"{
+		const peso = cucas.peso()
+		cucas.efectoDeAtaque()
+		assert.equals(cucas.peso(), peso + 2)
+	}
+	
+	test "las pulgas despues de atacar aumentan su poblacion en un 10%"{
+		const poblacion = pulgas.poblacion()
+		pulgas.efectoDeAtaque()
+		assert.equals(pulgas.poblacion(), poblacion * 1.1)
+	}
+	
+	test "las garrapatas despues de atacar aumentan su poblacion en un 20%"{
+		const poblacion = garrapatas.poblacion()
+		garrapatas.efectoDeAtaque()
+		assert.equals(garrapatas.poblacion(), poblacion * 1.2)
+	}
+	
+	test "las mosquitos despues de atacar aumentan su poblacion en un 10%"{
+		const poblacion = mosquitos.poblacion()
+		mosquitos.efectoDeAtaque()
+		assert.equals(mosquitos.poblacion(), poblacion * 1.1)
+	}
+	
+}

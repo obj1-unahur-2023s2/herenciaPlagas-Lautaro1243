@@ -1,0 +1,25 @@
+import barrio.*
+import elementos.*
+
+describe "test sobre un barrio"{
+	const sanAgustin = new Barrio()
+	const casaDiaz = new Hogar(mugre=10,confort=80)
+	const huerta1 = new Huerta(capacidadProduccion=80)
+	const tobi = new Mascota(nivelSalud=90)
+	const casaLedesma = new Hogar(mugre=20,confort=80)
+	const huerta2 = new Huerta(capacidadProduccion=110)
+	const rodo = new Mascota(nivelSalud=300)
+	
+	method initialize(){
+		sanAgustin.agregar(casaDiaz)
+		sanAgustin.agregar(huerta1)
+		sanAgustin.agregar(tobi)
+		sanAgustin.agregar(casaLedesma)
+		sanAgustin.agregar(huerta2)
+		sanAgustin.agregar(rodo)
+	}
+	
+	test "test sobre si barrio san Agustin es copado"{
+		assert.that(sanAgustin.esCopado())
+	}
+}

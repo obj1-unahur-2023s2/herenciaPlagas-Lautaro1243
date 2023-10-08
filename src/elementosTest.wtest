@@ -1,0 +1,24 @@
+import elementos.*
+import plagas.*
+
+describe "test sobre elementos"{
+	const casaDiaz = new Hogar(mugre=10,confort=80)
+	const huerta1 = new Huerta(capacidadProduccion=80)
+	const tobi = new Mascota(nivelSalud=90)
+	method initialize(){ 
+		nivelProduccion.nivel(85)
+	}
+	
+	test "la casa diaz es buena"{
+		assert.that(casaDiaz.esBuena())
+	}
+	
+	test "la huerta1 no es buena"{
+		assert.notThat(huerta1.esBuena())
+	}
+	
+	test "la mascota no es buena"{
+		assert.notThat(tobi.esBuena())
+	}
+	
+}
